@@ -67,3 +67,4 @@ Handlers voor een specifiek element kan je onder `ELEMENT HANDLERS`  in de docs 
 
 # Oefeningen todo
 2d (read handler gebruiken), 3abcd (op verschillende plekken elementen toevoegen)
+3b: pas op met opzetten UDP stream, wordt allemaal naar pcap gedumpt en kan schijf dus rap volmaken
