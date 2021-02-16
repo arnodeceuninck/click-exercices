@@ -10,20 +10,29 @@ elementclass Router { $src |
 	
 	querier::ARPQuerier($src);
 	responder::ARPResponder($src);
+
+	// Match arp request, arp reply, ip pakketten
+	// Maakt zeker dat we met IP bezig zijn
 	arpclass::Classifier(12/0806 20/0001, 12/0806 20/0002, -); // queries, responses, data
 	
 	input [0]
-	    -> [0]DecIPTTL[0] // src: https://github.com/kohler/click/wiki/DecIPTTL
-		-> [0]querier;
+	    // Komt van het netwerk en moet naar de switch, foute plaats
+	    -> [0]querier;
 
 	querier
 		-> [0]output;
 
 	input [1]
+	    // Komt van het netwerk, maar nog te vroeg
+	    // In arpclass wordt gekeken of het wel IP is
+	    // Hier is het dus nog niet zeker of het al IP is
 		-> arpclass;
 		
 	arpclass[0] // queries
 		-> responder
+		// Hier worden pakketten naar het netwerk gestuurd
+		// Moet bij van het netwerk verlaagd worden
+		// Uit de responder kunnen ook ARP pakketten komen
 		-> [0]output; // to network
   	
 	arpclass[1] // replies
@@ -35,6 +44,9 @@ elementclass Router { $src |
 	filter[0]
 		-> Strip(14)
 		-> MarkIPHeader
+		// Zit achter deze filter, zit achter de ARP Classifier
+		// src: https://github.com/kohler/click/wiki/DecIPTTL
+		-> DecIPTTL // Juiste oplossing
 		-> [1] output
 
 	filter[1]
