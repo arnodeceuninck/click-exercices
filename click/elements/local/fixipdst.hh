@@ -1,15 +1,15 @@
-#ifndef CLICK_FixIpAddr_HH
-#define CLICK_FixIpAddr_HH
+#ifndef CLICK_FixIpDst_HH
+#define CLICK_FixIpDst_HH
 #include <click/element.hh>
 CLICK_DECLS
 
-class FixIpAddr : public Element {
+class FixIpDst : public Element {
     struct in_addr _my_ip;
 	public:
-		FixIpAddr();
-		~FixIpAddr();
+		FixIpDst();
+		~FixIpDst();
 		
-		const char *class_name() const	{ return "FixIpAddr"; }
+		const char *class_name() const	{ return "FixIpDst"; }
 		const char *port_count() const	{ return "1/1"; }
 		const char *processing() const	{ return PUSH; }
 		int configure(Vector<String>&, ErrorHandler*);
