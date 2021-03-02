@@ -1,7 +1,7 @@
 #include <click/config.h>
 #include <click/args.hh>
 #include <click/error.hh>
-#include "simplenullagnosticelementEmptyString.hh"
+#include "simplenullagnosticelementemptystring.hh"
 
 CLICK_DECLS
 SimpleNullAgnosticElementEmptyString::SimpleNullAgnosticElementEmptyString()
@@ -11,7 +11,7 @@ SimpleNullAgnosticElementEmptyString::~ SimpleNullAgnosticElementEmptyString()
 {}
 
 int SimpleNullAgnosticElementEmptyString::configure(Vector<String> &conf, ErrorHandler *errh) {
-    if (conf.size() > 0) return errh->error("HALLO JE CONFIGURATION STRING IS NIET LEEG.")
+    if (conf.size() > 0) return errh->error("HALLO JE CONFIGURATION STRING IS NIET LEEG.");
 	return 0;
 }
 

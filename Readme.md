@@ -68,6 +68,6 @@ Handlers voor een specifiek element kan je onder `ELEMENT HANDLERS`  in de docs 
 # Oefeningen todo
 2d (read handler gebruiken), 3abcd (op verschillende plekken elementen toevoegen)
 3b: pas op met opzetten UDP stream, wordt allemaal naar pcap gedumpt en kan schijf dus rap volmaken
-
+4d: Kijk naar "DecIPTTL" als voorbeeld van een element dat IP Header aanpast. 
 # Oefening 4a
-import de click repo hier als een folder. Voeg de je eigen elementen toe onder `elements/local`. Doe `./configure`. Doe `make`. Voeg het nieuwe element to in je ping5.click
+import de click repo hier als een folder. Voeg de je eigen elementen toe onder `elements/local`. Doe `./configure --enable-etherswitch --enable-local`. Doe `make`. Voeg het nieuwe element to in je ping5.click
